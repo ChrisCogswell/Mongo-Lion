@@ -1,5 +1,9 @@
 body { 
-    background-color: #F2F6D0 
+    background: url(../images/narnia_lion_aslan_14106.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 #wrapper {
@@ -11,6 +15,7 @@ body {
 
 #title {
   text-align: center;
+  font-size: 100px;
 }
 
 #subtitle {
@@ -22,6 +27,7 @@ body {
   overflow: auto;
   width: 60%;
   height: 700px;
+  color: black;
 }
 #notes {
   float: right;
