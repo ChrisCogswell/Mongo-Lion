@@ -4,6 +4,8 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 var logger = require("morgan");
 const mongoose = require('mongoose');
+var exphbs = require("express-handlebars");
+
  
 // mongoose.connect('mongodb://localhost/my_database', {useNewUrlParser: true});
 
@@ -26,6 +28,20 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoLion";
 
 mongoose.connect(MONGODB_URI);
 
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+
+app.get("/", function(req, res) {
+    db.Article.find({}, function(error, data) {
+        var hbsObject = {
+          article: data
+        };
+        console.log(hbsObject);
+        res.render("index", hbsObject);
+      });
+    });
+  
 
 app.get("/scrape", (req, res) => {
     axios.get("https://arstechnica.com").then((response) => {

@@ -3,7 +3,8 @@ $.getJSON("/articles", function(data) {
     // For each one
     for (var i = 0; i < data.length; i++) {
       // Display the apropos information on the page
-      $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].summary + "<br />" + data[i].link + "</p>");
+    //   $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].summary + "<br />" + data[i].link + "</p>");
+    //   $(".card-title").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "</p>");
     }
   });
   
@@ -45,6 +46,7 @@ $.getJSON("/articles", function(data) {
   // When you click the savenote button
   $(document).on("click", "#savenote", function() {
     // Grab the id associated with the article from the submit button
+    alert("hello");
     var thisId = $(this).attr("data-id");
   
     // Run a POST request to change the note, using what's entered in the inputs
@@ -71,3 +73,14 @@ $.getJSON("/articles", function(data) {
     $("#bodyinput").val("");
   });
   
+  $("#scrape-button").on("click", function() {
+      alert("scrape");
+    $.ajax({
+        method: "GET",
+        url: "/scrape",
+    }).done(function(data) {
+        console.log(data)
+        // window.location = "/"
+        window.location.reload();
+    })
+});

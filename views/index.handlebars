@@ -1,0 +1,45 @@
+<nav class="navbar navbar-dark bg-dark">
+           <form class="form-inline">
+                <h1>Mongo-Lion</h1>
+             <button id ="scrape-button" class="btn btn-outline-success" type="button">Hunt New Articles</button>
+             <button class="btn btn-sm btn-outline-secondary" type="button">Saved articles</button>
+           </form>
+         </nav>
+    <div id="title-wrapper">
+      <h1 id="title">Mongo-Lion</h1>
+      <h2 id ="subtitle"><i>Let Mongo-Lion hunt articles for you!</i></h2>
+     
+    </div>
+    <div id="content-wrapper">
+         {{#if article}}
+            {{#each article}}
+            <div class="card">
+              <div class="card-body">
+                <a href ={{this.link}} target="_blank"><h3 class="card-title text-white bg-warning">
+                    {{this.title}}</h3></a>       
+                <p class="card-text">
+                    {{this.summary}}</p>
+                    <button type="button" class="btn btn-success save" data-id={{this._id}}>Save Article</button>
+                    {{!-- <a href={{this.link}} target="_blank">{{this.link}}</a> --}}
+                    
+                </div>
+            </div>
+            <br>
+            {{/each}}
+            {{else}}
+        <div class="card">
+            <div class="card-body">
+            <h4>Uh Oh. Looks like we don't have any new articles.</h4>
+            </div>
+         </div>
+        {{/if}}
+    </div>      
+    <!-- <div id="articles"></div> -->
+    <div id="comments"></div>
+    <nav class="navbar sticky-bottom navbar-dark bg-dark">
+            <p id="footer" class="navbar-brand">@Mongo-Lion 2019</p>
+    </nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+    <script src="/assets/javascript/app.js"></script>
