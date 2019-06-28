@@ -22,12 +22,19 @@ body {
 #title {
   text-align: center;
   font-size: 100px;
+  font-family: 'Acme', sans-serif;
+}
+
+h1 {
+  font-family: 'Acme', sans-serif;
 }
 
 #subtitle {
   text-align: center;
 }
 
+/* font-family: 'Acme', sans-serif;
+font-family: 'Questrial', sans-serif; */
 .card {
   margin-left: 15px;
   margin-right: 15px;
@@ -50,10 +57,12 @@ body {
   float: left;
   font-size: 18px;
   margin-left: 5%;
+  font-family: 'Questrial', sans-serif;
 }
 
 .card-title {
   padding: 15px;
+  font-family: 'Questrial', sans-serif;
 }
 
 #scrape-button{

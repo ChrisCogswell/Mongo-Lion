@@ -87,7 +87,7 @@
 });
 
   $("#comment-button").on("click", function() {
-    $("#comments").empty();
+    // $("#comments").empty();
     var thisId = $(this).attr("data-id");
   
     $.ajax({
@@ -97,11 +97,11 @@
       .then(function(data) {
         console.log(data);
         // The title of the article
-        $("#comments").append("<h2>" + data.title + "</h2>");
+        $("#exampleModalLabel").append("hello" +data.title);
         // An input to enter a new title
         $("#comments").append("<input id='titleinput' name='title' >");
         // A textarea to add a new note body
-        $("#comments").append("<textarea id='bodyinput' name='body'></textarea>");
+        $(".modal-body").append("<textarea id='bodyinput' name='body'></textarea>");
         // A button to submit a new note, with the id of the article saved to it
         $("#comments").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
   

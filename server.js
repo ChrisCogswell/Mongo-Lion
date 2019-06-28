@@ -28,6 +28,18 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoLion";
 
 mongoose.connect(MONGODB_URI);
 
+var DB = mongoose.connection;
+
+// Show any mongoose errors
+DB.on("error", function(error) {
+  console.log("Mongoose Error: ", error);
+});
+
+// Once logged in to the db through mongoose, log a success message
+DB.once("open", function() {
+  console.log("Connected to Mongoose");
+});
+
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
