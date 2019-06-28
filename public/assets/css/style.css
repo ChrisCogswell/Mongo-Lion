@@ -11,6 +11,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding-top: 5%;
+  padding-bottom: 5%;
 }
 
 #footer {
@@ -33,16 +34,44 @@ body {
 }
 
 .card-body {
-  padding: 0rem;
+  padding: 0px;
+  /* border: 2px solid orangered; */
 }
 
-#articles {
+#save-button {
+  float: right;
+}
+
+#comment-button {
+  float: right;
+}
+
+.card-text {
+  float: left;
+  font-size: 18px;
+  margin-left: 5%;
+}
+
+.card-title {
+  padding: 15px;
+}
+
+#scrape-button{
+margin-left: 5px;
+margin-right: 5px;
+}
+
+#clear-button {
+margin-right: 5px;
+}
+
+/* #articles {
   display: inline-block;
   overflow: auto;
   width: 60%;
   height: 700px;
   color: black;
-}
+} */
 #notes {
   float: right;
   width: 30%;

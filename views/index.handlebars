@@ -1,26 +1,49 @@
-<nav class="navbar navbar-dark bg-dark">
-           <form class="form-inline">
-                <h1>Mongo-Lion</h1>
-             <button id ="scrape-button" class="btn btn-outline-success" type="button">Hunt New Articles</button>
-             <button class="btn btn-sm btn-outline-secondary" type="button">Saved articles</button>
-           </form>
-         </nav>
+
     <div id="title-wrapper">
       <h1 id="title">Mongo-Lion</h1>
       <h2 id ="subtitle"><i>Let Mongo-Lion hunt articles for you!</i></h2>
-     
     </div>
+
+    <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     <div id="content-wrapper">
          {{#if article}}
             {{#each article}}
             <div class="card">
               <div class="card-body">
-                <a href ={{this.link}} target="_blank"><h3 class="card-title text-white bg-warning">
-                    {{this.title}}</h3></a>       
+                <a href ={{this.link}} target="_blank"><h2 class="card-title text-white bg-warning">
+                    {{this.title}}</h2></a>       
                 <p class="card-text">
                     {{this.summary}}</p>
-                    <button type="button" class="btn btn-success save" data-id={{this._id}}>Save Article</button>
-                    {{!-- <a href={{this.link}} target="_blank">{{this.link}}</a> --}}
+                    <button type="button" id="save-button" class="btn btn-success save" data-id={{this._id}}>Save Article</button>
+                    <button type="button" id="comment-button" class="btn btn-primary save"
+                     data-toggle="modal" data-target="#commentModal" data-id={{this._id}}>Leave Comment</button>
+
+  {{!-- <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    <h5 class="card-title">Warning card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+  <div class="p-3 mb-2 bg-light text-dark">.bg-light</div> --}}
                     
                 </div>
             </div>
@@ -36,10 +59,4 @@
     </div>      
     <!-- <div id="articles"></div> -->
     <div id="comments"></div>
-    <nav class="navbar sticky-bottom navbar-dark bg-dark">
-            <p id="footer" class="navbar-brand">@Mongo-Lion 2019</p>
-    </nav>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
-    <script src="/assets/javascript/app.js"></script>
+
