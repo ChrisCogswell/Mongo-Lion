@@ -74,43 +74,43 @@
   });
   
   $("#scrape-button").on("click", function() {
-      alert("scrape");
+    //   alert("scrape");
       $("#content-wrapper").empty();
     $.ajax({
         method: "GET",
         url: "/scrape",
     }).done(function(data) {
         console.log(data)
-        // window.location = "/"
+        window.location = "/"
         window.location.reload();
     })
 });
 
-  $("#comment-button").on("click", function() {
-    // $("#comments").empty();
-    var thisId = $(this).attr("data-id");
+//   $("#comment-button").on("click", function() {
+//     // $("#comments").empty();
+//     var thisId = $(this).attr("data-id");
   
-    $.ajax({
-      method: "GET",
-      url: "/articles/" + thisId
-    })
-      .then(function(data) {
-        console.log(data);
-        // The title of the article
-        $("#exampleModalLabel").append("hello" +data.title);
-        // An input to enter a new title
-        $("#comments").append("<input id='titleinput' name='title' >");
-        // A textarea to add a new note body
-        $(".modal-body").append("<textarea id='bodyinput' name='body'></textarea>");
-        // A button to submit a new note, with the id of the article saved to it
-        $("#comments").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
+//     $.ajax({
+//       method: "GET",
+//       url: "/articles/" + thisId
+//     })
+//       .then(function(data) {
+//         console.log(data);
+//         // The title of the article
+//         $("#exampleModalLabel").append("hello" +data.title);
+//         // An input to enter a new title
+//         $("#comments").append("<input id='titleinput' name='title' >");
+//         // A textarea to add a new note body
+//         $(".modal-body").append("<textarea id='bodyinput' name='body'></textarea>");
+//         // A button to submit a new note, with the id of the article saved to it
+//         $("#comments").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
   
-        // If there's a note in the article
-        if (data.comment) {
-          // Place the title of the note in the title input
-          $("#titleinput").val(data.comment.title);
-          // Place the body of the note in the body textarea
-          $("#bodyinput").val(data.comment.body);
-        }
-      });
-  });
+//         // If there's a note in the article
+//         if (data.comment) {
+//           // Place the title of the note in the title input
+//           $("#titleinput").val(data.comment.title);
+//           // Place the body of the note in the body textarea
+//           $("#bodyinput").val(data.comment.body);
+//         }
+//       });
+//   });

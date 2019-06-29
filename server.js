@@ -53,6 +53,7 @@ app.get("/", function(req, res) {
         res.render("index", hbsObject);
       });
     });
+    
   
 
 app.get("/scrape", (req, res) => {
