@@ -37,6 +37,10 @@ h1 {
   font-family: 'Acme', sans-serif;
 }
 
+#nav-name{
+  color: burlywood;
+}
+
 #subtitle {
   text-align: center;
 }
@@ -87,6 +91,14 @@ margin-right: 5px;
 margin-right: 5px;
 }
 
+.addComment {
+  float: right;
+}
+
+.delete {
+  float: right
+}
+
 /* #articles {
   display: inline-block;
   overflow: auto;
@@ -94,10 +106,10 @@ margin-right: 5px;
   height: 700px;
   color: black;
 } */
-#notes {
+/* #notes {
   float: right;
   width: 30%;
-}
+} */
 textarea, input {
   display: block;
   width: 100%;
@@ -110,4 +122,8 @@ input {
 textarea {
   height: 200px;
   font-size: 18px;
+}
+
+#no-articles{
+  text-align: center;
 }

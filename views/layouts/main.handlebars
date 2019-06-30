@@ -11,10 +11,11 @@
 	<body>
     <nav class="navbar navbar-dark bg-dark">
        <form class="form-inline">
-            <h1>Mongo-Lion</h1>
+           <a href="/"><h1 id="nav-name">Mongo-Lion</h1></a>
          <button id ="scrape-button" class="btn btn-outline-success" type="button">Hunt New Articles</button>
-         <button id ="clear-button" class="btn btn-outline-success" type="button">Clear Articles</button>
-         <button class="btn btn-sm btn-outline-secondary" type="button">Saved articles</button>
+         {{!-- <button id ="clear-button" class="btn btn-outline-success" type="button">Clear Articles</button> --}}
+         <button class="btn btn-sm btn-outline-secondary" type="button"><a href="/saved">Saved articles</a></button>
+         {{!-- <li><a href="/saved">Saved Articles</a></li> --}}
        </form>
      </nav>
 

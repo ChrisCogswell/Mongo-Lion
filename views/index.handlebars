@@ -4,42 +4,6 @@
       <h2 id ="subtitle"><i>Let Mongo-Lion hunt articles for you!</i></h2>
     </div>
 
-{{!-- Comment Modal --}}
-
-<div class="modal fade modalComment" id="commentModal{{this._id}}" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Comments for {{this.title}}</h4>
-            </div>
-            <div class="modal-body">
-                {{#if this.comment}}
-                    {{#each this.comment}}
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <p class="previousComments"> {{this.body}}</p>
-                                <button type="button" class="btn btn-danger deleteComment" data-comment-id={{this._id}} data-article-id={{this.article}}>X</button>
-                            </div>
-                        </div>
-                    {{/each}}
-                {{else}}
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <h4>No notes for this article yet.</h4>
-                        </div>
-                    </div>
-                {{/if}}
-                <div class="form-group">
-                    <textarea id="commentText{{this._id}}" class="form-control" rows="4" placeholder="New Comment"></textarea>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary saveComment" data-id={{this._id}}>Save Comment</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 {{!-- Article Section --}}

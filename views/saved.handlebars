@@ -5,7 +5,7 @@
 
 {{!-- Comment Modal --}}
 
-<div class="modal fade modalComment" id="commentModal{{this._id}}" tabindex="-1" role="dialog">
+{{!-- <div class="modal fade modalComment" id="commentModal{{this._id}}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -38,7 +38,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 
 {{!-- Article Section --}}
@@ -61,7 +61,7 @@
             {{else}}
         <div class="panel panel-default">
             <div class="panel-body">
-                <h4>You have no saved articles.</h4>
+                <h4 id ="no-articles">You have no saved articles.</h4>
             </div>
         </div>
         {{/if}}
