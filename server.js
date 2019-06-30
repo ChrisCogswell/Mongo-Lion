@@ -26,7 +26,13 @@ app.use(express.static("public"));
 // Connect to the Mongo DB
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoLion";
 
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+
+
 mongoose.connect(MONGODB_URI);
+
 
 var DB = mongoose.connection;
 
@@ -112,6 +118,7 @@ app.get("/articles", function(req, res) {
       });
   });
 
+  
   // Route for grabbing a specific Article by id, populate it with it's note
 app.get("/articles/:id", function(req, res) {
     // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...

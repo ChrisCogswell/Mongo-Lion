@@ -10,7 +10,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Comments for {{this._id}}</h4>
+                <h4 class="modal-title">Comments for {{this.title}}</h4>
             </div>
             <div class="modal-body">
                 {{#if this.comment}}
@@ -18,7 +18,7 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <p class="previousComments"> {{this.body}}</p>
-                                <button type="button" class="btn btn-danger deleteComment" data-note-id={{this._id}} data-article-id={{this.article}}>X</button>
+                                <button type="button" class="btn btn-danger deleteComment" data-comment-id={{this._id}} data-article-id={{this.article}}>X</button>
                             </div>
                         </div>
                     {{/each}}
@@ -55,7 +55,7 @@
                     {{this.summary}}</p>
                     <button type="button" id="save-button" class="btn btn-success save" data-id={{this._id}}>Save Article</button>
                     <button type="button" id="comment-button" class="btn btn-primary save"
-                     data-toggle="modal" data-target="#commentModal" data-id={{this._id}}>Leave Comment</button>                  
+                     data-toggle="modal" data-target="#commentModal"{{this._id}} data-id={{this._id}}>Leave Comment</button>                  
                 </div>
             </div>
             <br>
