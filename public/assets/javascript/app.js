@@ -34,12 +34,9 @@ $(".delete").on("click", function() {
   })
 });
 
-//Handle Save Note button
+// Save Note button
 $(".saveComment").on("click", function() {
   var thisId = $(this).attr("data-id");
-  if (!$("#commentText" + thisId).val()) {
-      alert("Leave a valid comment")
-  }else {
     $.ajax({
           method: "POST",
           url: "/comments/save/" + thisId,
@@ -54,16 +51,16 @@ $(".saveComment").on("click", function() {
             $(".modalComment").modal("hide");
             window.location = "/saved"
         });
-  }
+  
 });
 
-//Handle Delete Note button
+// Delete Note button
 $(".deleteComment").on("click", function() {
-  var noteId = $(this).attr("data-comment-id");
+  var commentId = $(this).attr("data-comment-id");
   var articleId = $(this).attr("data-article-id");
   $.ajax({
       method: "DELETE",
-      url: "/comments/delete/" + noteId + "/" + articleId
+      url: "/comments/delete/" + commentId + "/" + articleId
   }).done(function(data) {
       console.log(data)
       $(".modalComment").modal("hide");
