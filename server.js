@@ -51,7 +51,7 @@ app.set("view engine", "handlebars");
 
 
 app.get("/", function(req, res) {
-    db.Article.find({}, function(error, data) {
+    db.Article.find({"saved": false}, function(error, data) {
         var hbsObject = {
           article: data
         };
@@ -59,6 +59,16 @@ app.get("/", function(req, res) {
         res.render("index", hbsObject);
       });
     });
+
+app.get("/saved", function(req, res) {
+  db.Article.find({"saved": true}).populate("comment").exec(function(error, articles) {
+    var hbsObject = {
+      article: articles
+    };
+    res.render("saved", hbsObject);
+  });
+});
+
     
   
 
@@ -122,7 +132,7 @@ app.get("/articles", function(req, res) {
   // Route for grabbing a specific Article by id, populate it with it's note
 app.get("/articles/:id", function(req, res) {
     // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
-    db.Article.findOne({ _id: req.params.id })
+    db.Article.findOne({ "_id": req.params.id })
       // ..and populate all of the notes associated with it
       .populate("comment")
       .then(function(dbArticle) {
@@ -143,7 +153,7 @@ app.post("/articles/:id", function(req, res) {
         // If a Note was created successfully, find one Article with an `_id` equal to `req.params.id`. Update the Article to be associated with the new Note
         // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
         // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-        return db.Article.findOneAndUpdate({ _id: req.params.id }, { comment: dbComment._id }, { new: true });
+        return db.Article.findOneAndUpdate({ "_id": req.params.id }, { "comment": dbComment._id }, { new: true });
       })
       .then(function(dbArticle) {
         // If we were able to successfully update an Article, send it back to the client
@@ -154,6 +164,102 @@ app.post("/articles/:id", function(req, res) {
         res.json(err);
       });
   });
+
+  app.post("/articles/save/:id", function(req, res) {
+    // Use the article id to find and update its saved boolean
+    db.Article.findOneAndUpdate({ "_id": req.params.id }, { "saved": true})
+    // Execute the above query
+    .exec(function(err, doc) {
+      // Log any errors
+      if (err) {
+        console.log(err);
+      }
+      else {
+        // Or send the document to the browser
+        res.send(doc);
+      }
+    });
+});
+
+// Delete an article
+app.post("/articles/delete/:id", function(req, res) {
+    // Use the article id to find and update its saved boolean
+    db.Article.findOneAndUpdate({ "_id": req.params.id }, {"saved": false, "comment": []})
+    // Execute the above query
+    .exec(function(err, doc) {
+      // Log any errors
+      if (err) {
+        console.log(err);
+      }
+      else {
+        // Or send the document to the browser
+        res.send(doc);
+      }
+    });
+});
+
+
+// Create a new note
+app.post("/comments/save/:id", function(req, res) {
+// Create a new note and pass the req.body to the entry
+var newComment = new Comment({
+  title: req.body.text,
+  body: req.body.text,
+  article: req.params.id
+});
+console.log(req.body)
+// And save the new note the db
+newComment.save(function(error, note) {
+  // Log any errors
+  if (error) {
+    console.log(error);
+  }
+  // Otherwise
+  else {
+    // Use the article id to find and update it's notes
+    db.Article.findOneAndUpdate({ "_id": req.params.id }, {$push: { "comment": comment } })
+    // Execute the above query
+    .exec(function(err) {
+      // Log any errors
+      if (err) {
+        console.log(err);
+        res.send(err);
+      }
+      else {
+        // Or send the note to the browser
+        res.send(comment);
+      }
+    });
+  }
+});
+});
+
+// Delete a note
+app.delete("/comments/delete/:comment_id/:article_id", function(req, res) {
+// Use the note id to find and delete it
+db.Comment.findOneAndRemove({ "_id": req.params.note_id }, function(err) {
+  // Log any errors
+  if (err) {
+    console.log(err);
+    res.send(err);
+  }
+  else {
+   db.Article.findOneAndUpdate({ "_id": req.params.article_id }, {$pull: {"comment": req.params.comment_id}})
+     // Execute the above query
+      .exec(function(err) {
+        // Log any errors
+        if (err) {
+          console.log(err);
+          res.send(err);
+        }
+        else {
+          // Or send the note to the browser
+          res.send("Comment Removed");
+        }
+      });
+  }
+});
+}); 
 
 
 

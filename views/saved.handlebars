@@ -1,7 +1,6 @@
-
-    <div id="title-wrapper">
+<div id="title-wrapper">
       <h1 id="title">Mongo-Lion</h1>
-      <h2 id ="subtitle"><i>Let Mongo-Lion hunt articles for you!</i></h2>
+      <h2 id ="subtitle"><i>Saved Articles</i></h2>
     </div>
 
 {{!-- Comment Modal --}}
@@ -44,7 +43,7 @@
 
 {{!-- Article Section --}}
 
-    <div id="content-wrapper">
+ <div id="content-wrapper">
          {{#if article}}
             {{#each article}}
             <div class="card">
@@ -53,27 +52,22 @@
                     {{this.title}}</h2></a>       
                 <p class="card-text">
                     {{this.summary}}</p>
-                    <button type="button" id="save-button" class="btn btn-success save" data-id={{this._id}}>Save Article</button>
-                    {{!-- <button type="button" id="comment-button" class="btn btn-primary save" --}}
-                     {{!-- data-toggle="modal" data-target="#commentModal"{{this._id}} data-id={{this._id}}>Leave Comment</button>                   --}}
+                <button type="button" class="btn btn-success addComment" data-toggle="modal" data-target="#commentModal{{this._id}}" data-id={{this._id}}>Add a Comment</button>
+                <button type="button" class="btn btn-danger delete" data-id={{this._id}}>Delete</button>
                 </div>
             </div>
             <br>
             {{/each}}
             {{else}}
-
-{{!-- If no articles are available --}}
-
-        <div class="card" id="whoops-card">
-            <div class="card-title bg-danger">
-            <h4>Whoops. Looks like we don't have any new articles.</h4>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h4>You have no saved articles.</h4>
             </div>
-            <div class="card-body">
-            <h3>Press the Hunt New Articles button</h3> 
-            </div>
-         </div>
+        </div>
         {{/if}}
-    </div>   
+    </div>
+</div>
+  
     <br><br><br>   
     {{!-- <div id="comments"></div> --}}
 
