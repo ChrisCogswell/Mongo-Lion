@@ -34,7 +34,7 @@ $(".delete").on("click", function() {
   })
 });
 
-// Save Note button
+// Save Comment button
 $(".saveComment").on("click", function() {
   var thisId = $(this).attr("data-id");
     $.ajax({
@@ -46,7 +46,6 @@ $(".saveComment").on("click", function() {
         }).done(function(data) {
             // Log the response
             console.log(data);
-            // Empty the notes section
             $("#commentText" + thisId).val("");
             $(".modalComment").modal("hide");
             window.location = "/saved"
@@ -54,7 +53,7 @@ $(".saveComment").on("click", function() {
   
 });
 
-// Delete Note button
+// Delete Save Comment button
 $(".deleteComment").on("click", function() {
   var commentId = $(this).attr("data-comment-id");
   var articleId = $(this).attr("data-article-id");

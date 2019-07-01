@@ -189,7 +189,8 @@ app.post("/articles/delete/:id", function(req, res) {
 });
 
 
-// Create a new note
+// Create a comment
+
 // app.post("/comments/save/:id", function(req, res) {
 // var newComment = new Comment({
 //   title: req.body.text,
@@ -216,7 +217,8 @@ app.post("/articles/delete/:id", function(req, res) {
 // });
 // });
 
-// Delete a note
+// Delete a comment
+
 // app.delete("/comments/delete/:comment_id/:article_id", function(req, res) {
 // db.Comment.findOneAndRemove({ "_id": req.params.note_id }, function(err) {
 //   if (err) {
